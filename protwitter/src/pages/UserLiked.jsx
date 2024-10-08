@@ -35,20 +35,21 @@ function UserLiked() {
             .then(function (response) {
                 setUserData(response.data);
                 console.log(response.data);
-                setLikedTweets(response.data.likedTweets)
+                setLikedTweets(response.data.likedTweets);
                 console.log(response.data.likedTweets);
-
+                fetchCurrUserTweets(response.data.likedTweets);
             })
             .catch(function (error) {
                 console.log(error);
             });
     };
 
-    const fetchCurrUserTweets = () => {
+
+    const fetchCurrUserTweets = (likedTweets) => {
         axios.get(apiUrl)
             .then(function (response) {
                 const tweets = response.data;
-                const userTweets = tweets.filter((ele) => likedTweets.includes(ele.id))
+                const userTweets = tweets.filter((ele) => likedTweets.includes(ele.id));
                 console.log(userTweets);
                 setCurrentUserTweets(userTweets);
             })
@@ -68,12 +69,14 @@ function UserLiked() {
         })
             .then(response => {
                 setLikedTweets(updatedLikedTweets);
+                fetchCurrUserTweets(updatedLikedTweets);
                 console.log('Successfully updated liked tweets:', response);
             })
             .catch(error => {
                 console.error('Error updating liked tweets:', error.response ? error.response.data : error.message);
             });
     };
+
 
 
     return (
