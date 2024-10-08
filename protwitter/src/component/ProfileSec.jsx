@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function ProfileSec({ likedpage }) {
+    const loggedinUser = localStorage.getItem('username');
+    const loggedinUserId = localStorage.getItem('userid');
+    const loggedinUsername = localStorage.getItem('name');
+
+
     return (
         <>
             <div className='relative flex flex-col gap-2 border-b border-[#303336]'>
@@ -26,7 +31,7 @@ function ProfileSec({ likedpage }) {
                 <div className='flex flex-col items-start justify-start px-4 py-2 '>
 
                     <div className='flex items-center justify-start gap-1'>
-                        <h1 className='font-bold text-[1.3rem] text-[#E7E9EA]'>سارة بن عبدالعزيز</h1>
+                        <h1 className='font-bold text-[1.3rem] text-[#E7E9EA]'>{loggedinUsername}</h1>
                         <p>
                             < svg viewBox="0 0 22 22" fill='#1D9BF0'
                                 className='h-5' >
@@ -34,7 +39,7 @@ function ProfileSec({ likedpage }) {
                                 </path></g></svg >
                         </p>
                     </div>
-                    <p dir='ltr' className='text-[#71767b] text-[0.94rem]'>@Saraabd</p>
+                    <p dir='ltr' className='text-[#71767b] text-[0.94rem]'>@{loggedinUser}</p>
                     <div className='flex flex-col gap-2 items-center'>
                         <div className='flex gap-2 items-center mt-3'>
                             <svg viewBox="0 0 24 24 " fill='#71767b' className='h-5' >

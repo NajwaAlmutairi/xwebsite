@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function Navbar({ type }) {
     const [inputCol, setInputCol] = useState(false);
+    const loggedinUsername = localStorage.getItem('name');
     return (
         <>
             <div className='w-full flex sticky top-0 z-50'>
@@ -34,7 +35,7 @@ function Navbar({ type }) {
                                 </svg>
                                 </button>
                                 <div className='flex flex-col items-start justify-start py-2 '>                                    <div className='flex items-center justify-start gap-1'>
-                                    <h1 className='font-bold text-[1.25rem] text-[#E7E9EA]'>سارة بن عبدالعزيز</h1>
+                                    <h1 className='font-bold text-[1.25rem] text-[#E7E9EA]'> {loggedinUsername}</h1>
                                     <p>
                                         < svg viewBox="0 0 22 22" fill='#1D9BF0'
                                             className='h-5' >
